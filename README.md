@@ -18,7 +18,6 @@ Neste portfólio, organizo meus projetos e estudos nas seguintes categorias:
 ### 🛠️ Execução de Testes
 * **Testes Manuais:** Validações exploratórias e de usabilidade.
 * **Testes Automatizados:** Scripts de automação (Web, API, Mobile).
-* **Testes de Performance:** Análise de carga, estresse e estabilidade.
 
 ### 📊 Resultados & Métricas
 * **Relatórios de Bugs:** Reports detalhados com evidências e classificação de severidade.
