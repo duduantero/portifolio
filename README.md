@@ -29,9 +29,6 @@ Neste portfólio, organizo meus projetos e estudos nas seguintes categorias:
 ## 🧰 Tech Stack (Ferramentas)
 *(Principais tecnologias e ferramentas que utilizo no dia a dia)*
 
-## 🧰 Tech Stack (Ferramentas)
-*(Principais tecnologias e ferramentas que utilizo no dia a dia)*
-
 * ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 * ![SQL](https://img.shields.io/badge/-SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
 * ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
