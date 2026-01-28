@@ -43,15 +43,15 @@ Neste portfólio, organizo meus projetos e estudos nas seguintes categorias:
 
 Organizei este portfólio de forma temática para facilitar a exploração dos artefatos. Abaixo, detalho o que você encontrará em cada diretório:
 
-### 📂 [Documentação da Qualidade](./Documentacao_da_Qualidade)
+### 📂 [Documentação da Qualidade](./documentacao-da-Qualidade)
 Aqui concentro a base teórica e processual do QA.
 * **O que tem:** Modelos (templates) pré-prontos para auxiliar nas atividades diárias e documentos reais resultantes dos meus estudos.
 
-### 🧪 [Testes Manuais](./Testes_Manuais)
+### 🧪 [Testes Manuais](./testes-manuais)
 Projetos focados na execução humana e exploratória.
 * **O que tem:** Casos de teste, roteiros e validações funcionais provenientes de projetos de estudo.
 
-### 🤖 [Testes Automatizados](./Testes_Automatizados)
+### 🤖 [Testes Automatizados](./testes-automatizados)
 Projetos de automação resultantes de cursos e práticas avançadas.
 * **Tech Stack:**
   ![Cypress](https://img.shields.io/badge/-Cypress-17202C?logo=cypress&logoColor=white)
