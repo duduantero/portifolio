@@ -1,8 +1,8 @@
-Plano de Teste
+# Plano de Teste
 
 
-*Aplicação Alvo:** [BugBank UI - Jhonatas Matos](https://github.com/jhonatasmatos/bugbank-ui)
-Resonsável: [Eduardo Antero](https://www.linkedin.com/in/eduardoantero/)
+**Aplicação Alvo:** [BugBank UI](https://github.com/jhonatasmatos/bugbank-ui)<br>
+**Responsável:** [Eduardo Antero](https://www.linkedin.com/in/eduardoantero/)
 
 ## 1. Introdução
 
@@ -38,7 +38,7 @@ Funcionalidades que não serão testadas:
 * Saque
 * Pagamento
   
-  > **Nota:** Funcionalidades Saque e Pagamentos não possuem regras de negocio, requisitos funcionais e ainda estão em desenvolvimento.
+  > **Nota:** Funcionalidades Saque e Pagamentos não foram desenvolvidas e também não possuem regras de negocio, requisitos funcionais.
 
 
 ## 4. Abordagem de Teste
