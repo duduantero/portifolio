@@ -37,15 +37,13 @@ Data: 21/01/2016
     <summary><a href="#c03">Cenário 03: Transações e Movimentações</a></summary>
     <ul>
         <li><a href="#c03ct1">Caso de Teste 01: Transferência bem sucedida</a></li>
-        <li><a href="#c03ct2">Caso de Teste 02: Transferência de uma conta vpalida para conta inválida</li>
-        <li><a href="#c03ct3">Caso de Teste 03: Transferência de uma conta inválida para válida</li>
-        <li><a href="#c03ct4">Caso de Teste 04: Transferência de uma conta inválida para inválida</li>
-        <li><a href="#c03ct5">Caso de Teste 05: Transferência com saldo insulficiente</li>
-        <li><a href="#c03ct6">Caso de Teste 06: Transferência sem preencher campo descrição</li>
-        <li><a href="#c03ct7">Caso de Teste 07: Transferência sem preencher conta destino</li>
-        <li><a href="#c03ct8">Caso de Teste 08: Transferência com número e digito da conta com letras</li>
-        <li><a href="#c03ct9">Caso de Teste 09: Transferência de valor menor que zero </li>
-        <li><a href="#c03ct10">Caso de Teste 10: Transferência de valor igual a zero </li>
+        <li><a href="#c03ct2">Caso de Teste 02: Transferência de uma conta válida para conta inválida</li>
+        <li><a href="#c03ct3">Caso de Teste 03: Transferência com saldo insulficiente</li>
+        <li><a href="#c03ct4">Caso de Teste 04: Transferência sem preencher campo descrição</li>
+        <li><a href="#c03ct5">Caso de Teste 05: Transferência sem preencher conta destino</li>
+        <li><a href="#c03ct6">Caso de Teste 06: Transferência com número e digito da conta com letras</li>
+        <li><a href="#c03ct7">Caso de Teste 07: Transferência de valor menor que zero </li>
+        <li><a href="#c03ct8">Caso de Teste 08: Transferência de valor igual a zero </li>
     </ul>
 </details>
 
@@ -375,8 +373,6 @@ Data: 21/01/2016
 ## Cenário 02: Autenticação e Segurança de Acesso
 **Objetivo:** Assegurar que apenas usuários registrados tenham acesso à conta e que tentativas inválidas sejam tratadas adequadamente.
 
-<a id="c03"></a>
-
 <a id="c02ct1"></a>
 ### Caso de Teste 01: Autenticação com dados de usuário e senha válidos
 <table>
@@ -453,19 +449,311 @@ Caso de Teste 02: Autenticação com dados de usuário inválido
   </tr>
 </table>
 
-
-
-
-
 <p><a href="#index">Voltar para o sumário</a></p>
 
-
-
-
-
-## Cenário 03: Core Banking: Transações e Movimentações
+<a id="c03"></a>
+## Cenário 03: Transações e Movimentações
 **Objetivo:** Garantir a integridade das transferências financeiras, cálculos de débito/crédito e bloqueios de saldo insuficiente.
 
+<a id="c03ct1"></a>
+### Caso de Teste 01:Transferência bem sucedida
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT01</td>
+    <td width="70%"><b>Objetivo:</b> Validar se o sistema realiza a transferência entre contas válidas com sucesso</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar autenticado e logado na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "123-4"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "100"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência válida"</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem de sucesso informando "Transferência realizada com sucesso" <b>E</b> atualizar os saldos de origem e destino</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Exibição mensagem confirmando transferência</li>
+        <li>Debito na conta origem</li>
+        <li>Crédito na conta destino</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct2"></a>
+### Caso de Teste 02: Transferência de uma conta válida para conta inválida
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT02</td>
+    <td width="70%"><b>Objetivo:</b> Validar se o sistema bloqueia transferir valores para conta inválida</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar autenticado e logado na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "999-9"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "100"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência inválida"</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem de sucesso informando "Conta inválida ou inexistente" </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Exibição mensagem informando conta inválida ou inexistente</li>
+        <li>Impedimento da transação financeira</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct3"></a>
+### Caso de Teste 03: Transferência com saldo insuficiente
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT03</td>
+    <td width="70%"><b>Objetivo:</b> Validar se o sistema não realiza transferência pela falta de saldo</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar na autenticado e na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "123-4"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "2000"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência sem saldo"</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem informando "Saldo insuficiente" </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Bloqueio da transação</li>
+        <li>Manutenção do saldo atual</li>
+        <li>Mensagem de erro contextualizada</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct4"></a>
+### Caso de Teste 04: Transferência sem preencher campo descrição
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT04</td>
+    <td width="70%"><b>Objetivo:</b> Validar a obrigatoriedade do campo descrição no formulário de transferência</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar na autenticado e na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "999-9"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "100"</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b>  sistema não deve realizar transferência <b>E</b> informar falta de preenchimento do campo descrição </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Exibição mensagem informando falta do preenchimento da descrição da transferência</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct5"></a>
+### Caso de Teste 05: Transferência sem preencher conta destino
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT05</td>
+    <td width="70%"><b>Objetivo:</b> Validar impedimento de envio de valores sem definição de destinatário</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar na autenticado e na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "2000"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência sem destinatário"</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem informando falta do preenchimento de conta destino</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Exibição mensagem informando falta de conta destino</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct6"></a>
+### Caso de Teste 06: Transferência com número e digito da conta com letras
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT06</td>
+    <td width="70%"><b>Objetivo:</b> Validar se o sistema aceita apenas caracteres numéricos no campo da conta</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar na autenticado e na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "1a23-a"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "20"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem informando dados da conta destinatário devem conter apenas números </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Exibição mensagem informando conta destinário devem conter apenas números</li>
+        <li>Validação de campo (máscara ou erro de formato) impedindo caracteres não numéricos</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct7"></a>
+### Caso de Teste 07: Transferência de valor menor que zero 
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT07</td>
+    <td width="70%"><b>Objetivo:</b> Validar impedimento de transferência com valores menores que zero</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar na autenticado e na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "999-9"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "-1"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência saldo negativo</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem  informando transferência não pode ser igual ou menor que zero</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Bloqueio de valores negativos no processamento da transação</li>
+        <li>Exibição mensagem informando que valor de transferência não pode ser igual ou menor que zero </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<a id="c03ct8"></a>
+### Caso de Teste 08: Transferência de valor igual a zero 
+
+<table>
+  <tr>
+    <td width="30%"><b>ID:</b> C03-CT08</td>
+    <td width="70%"><b>Objetivo:</b> Validar impedimento de transferência com valor igual a zero</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Pré-Condições:</b>
+      <ul>
+        <li>O usuário deve estar na autenticado e na página de transferência.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <p><b>Passos:</b></p>
+      <div><b>DADO</b> que o usuário está na página de transferência</div>
+      <div><b>E</b> preenche o campo "Número da conta" com "999-9"</div>
+      <div><b>E</b> preenche o campo "Valor da transferência" com "0"</div>
+      <div><b>E</b> preenche o campo "Descrição" com "Teste transferência saldo 0</div>
+      <div><b>QUANDO</b> clica no botão "Transferir agora"</div>
+      <div><b>ENTÃO</b> deve exibir mensagem  informando transferência não pode ser igual ou menor que zero</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>Critérios de Aceite:</b>
+      <ul>
+        <li>Exibição mensagem informando que valor de transferência não pode ser igual ou menor que zero </li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 <a id="c04"></a>
 
@@ -473,5 +761,7 @@ Caso de Teste 02: Autenticação com dados de usuário inválido
 
 ## Cenário 04: Auditoria de Saldo e Histórico Financeiro
 **Objetivo:** Verificar a consistência visual e matemática do extrato, assegurando que o *Local Storage* reflete as transações realizadas.
+
+### Caso de Teste 01:
 
 <p><a href="#index">Voltar para o sumário</a></p>
