@@ -36,14 +36,16 @@
 <details>
     <summary><a href="#c03">Cenário 03: Transações e Movimentações</a></summary>
     <ul>
-        <li><a href="#c03ct1">Caso de Teste 01: Transferência bem sucedida</a></li>
-        <li><a href="#c03ct2">Caso de Teste 02: Transferência de uma conta válida para conta inválida</a></li>
-        <li><a href="#c03ct3">Caso de Teste 03: Transferência com saldo insuficiente</a></li>
+        <li><a href="#c03ct1">Caso de Teste 01: Transferência de R$ 100 de uma conta com saldo suficiente para uma conta válida </a></li>
+        <li><a href="#c03ct2">Caso de Teste 02: Transferência de R$100 de conta válida com saldo suficiente para uma conta inválida </a></li>
+        <li><a href="#c03ct3">Caso de Teste 03: Transferência com saldo insuficiente para uma conta válida</a></li>
         <li><a href="#c03ct4">Caso de Teste 04: Transferência sem preencher campo descrição</a></li>
         <li><a href="#c03ct5">Caso de Teste 05: Transferência sem preencher conta destino</a></li>
         <li><a href="#c03ct6">Caso de Teste 06: Transferência com número e dígito da conta com letras</a></li>
         <li><a href="#c03ct7">Caso de Teste 07: Transferência de valor menor que zero</a></li>
         <li><a href="#c03ct8">Caso de Teste 08: Transferência de valor igual a zero</a></li>
+        <li><a href="#c03ct10">Caso de Teste 10: Transferência sem fornecer valor</a></li>
+        <li><a href="#c03ct11">Caso de Teste 11: Realizar transferência sem fornecer todas as informações</a></li>
     </ul>
 </details>
 
@@ -51,6 +53,9 @@
     <summary><a href="#c04">Cenário 04: Auditoria de Saldo e Histórico Financeiro</a></summary>
     <ul>
         <li><a href="#c04ct1">Caso de Teste 01: Exibição de Saldo Inicial a partir de conta criada com saldo</a></li>
+        <li><a href="c04ct2">Caso de Teste 02: Atualização de Saldo e Histórico após Transferência Enviada</a></li>
+        <li><a href="c04ct3">Caso de Teste 03: Exibição de Transação Sem Comentário/Descrição</a></li>
+        <li><a href="c04ct4">Caso de Teste 04: Persistência de Dados no Extrato após Recarregamento (Local Storage)</a></li>
     </ul>
 </details>
 
@@ -476,7 +481,7 @@
 
 <a id="c03ct1"></a>
 
-### Caso de Teste 01: Transferência bem sucedida
+### Caso de Teste 01: Transferência de R$ 100 de uma conta com saldo suficiente para uma conta válida
 
 <table style="max-width: 850px; width: 100%; border-collapse: collapse;">
   <tr>
@@ -516,7 +521,7 @@
 
 <a id="c03ct2"></a>
 
-### Caso de Teste 02: Transferência de uma conta válida para conta inválida
+### Caso de Teste 02: Transferência de R$100 de conta válida com saldo suficiente para uma conta inválida
 
 <table style="max-width: 850px; width: 100%; border-collapse: collapse;">
   <tr>
